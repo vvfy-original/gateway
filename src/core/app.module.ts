@@ -2,11 +2,11 @@ import { ApolloDriver } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
-import { IS_DEV_ENV } from 'src/shared/utils/is-dev.util'
+import { getGraphqlFactory } from '@vvfy/common'
+import { IS_DEV_ENV, isDev } from 'src/shared/utils/is-dev.util'
 
 import { AppResolver } from './app.resolver'
 import { AppService } from './app.service'
-import { getGraphqlFactory } from './config/factories'
 
 @Module({
 	imports: [
@@ -16,7 +16,12 @@ import { getGraphqlFactory } from './config/factories'
 		}),
 		GraphQLModule.forRootAsync({
 			driver: ApolloDriver,
-			useFactory: getGraphqlFactory,
+			useFactory: (configService: ConfigService) =>
+				getGraphqlFactory(
+					isDev(configService),
+					configService.getOrThrow<string>('GRAPHQL_PREFIX'),
+					'src/core/graphql/schema.gql'
+				),
 			inject: [ConfigService],
 			imports: [ConfigModule]
 		})

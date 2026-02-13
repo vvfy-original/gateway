@@ -1843,6 +1843,11 @@
   resolved "https://registry.yarnpkg.com/@unrs/resolver-binding-win32-x64-msvc/-/resolver-binding-win32-x64-msvc-1.11.1.tgz#538b1e103bf8d9864e7b85cc96fa8d6fb6c40777"
   integrity sha512-lrW200hZdbfRtztbygyaq/6jP6AKE8qQN2KvPcJ+x7wiD038YtnYtZ82IMNJ69GJibV7bwL3y9FgK+5w/pYt6g==
 
+"@vvfy/common@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@vvfy/common/-/common-1.0.0.tgz#44372fc48e752db32c6dbbd139208cd1b5432bd0"
+  integrity sha512-tDmR6mGGHVzM9zoxPkTlOokPQBTZXvgYepBafLyoyA4/sIypB9XFPqtzJN87AInvSdDwIrZNHwbnannX4Z71mA==
+
 "@vvfy/core@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@vvfy/core/-/core-1.0.2.tgz#e042d1c5760d22804c6e3088bb29beda69ab0a3f"
