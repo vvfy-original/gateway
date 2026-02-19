@@ -1,9 +1,10 @@
 import { ApolloDriver } from '@nestjs/apollo'
 import { Module } from '@nestjs/common'
 import { ConfigModule, ConfigService } from '@nestjs/config'
+import { APP_FILTER } from '@nestjs/core'
 import { GraphQLModule } from '@nestjs/graphql'
-import { getGraphqlFactory } from '@vvfy/common'
-import { IS_DEV_ENV, isDev } from 'src/shared/utils/is-dev.util'
+import { getGraphqlFactory, IS_DEV_ENV, isDev } from '@vvfy/common'
+import { AuthModule } from 'src/modules/auth/auth.module'
 
 import { AppResolver } from './app.resolver'
 import { AppService } from './app.service'
@@ -24,7 +25,8 @@ import { AppService } from './app.service'
 				),
 			inject: [ConfigService],
 			imports: [ConfigModule]
-		})
+		}),
+		AuthModule
 	],
 	providers: [AppService, AppResolver]
 })
